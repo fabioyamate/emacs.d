@@ -89,6 +89,14 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+;; ido-mode
+(ido-mode 1)
+(setq ido-everywhere t)
+(setq ido-enable-flex-matching t)
+
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
+
 ;; haskell-mode
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
