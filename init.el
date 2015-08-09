@@ -36,6 +36,9 @@
     ;; https://github.com/clojure-emacs/cider
     cider
 
+    ;; company-mode for autocompletion
+    company
+
     ;; allow ido usage in as many contexts as possible. see
     ;; customizations/navigation.el line 23 for a description
     ;; of ido
@@ -91,6 +94,9 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+;; paredit
+(require 'paredit)
+
 ;; ido-mode
 (ido-mode 1)
 (setq ido-everywhere t)
@@ -100,8 +106,23 @@
 (ido-ubiquitous-mode 1)
 
 ;; clojure-mode
+(require 'clojure-mode)
 (add-hook 'cider-mode-hook #'eldoc-mode)
 (add-hook 'clojure-mode-hook #'paredit-mode)
+
+;; cider
+(require 'cider)
+(add-hook 'cider-repl-mode-hook #'paredit-mode)
+(add-hook 'cider-repl-mode-hook #'subword-mode)
+
+;;; cider autocompletion
+(add-hook 'cider-repl-mode-hook #'company-mode)
+(add-hook 'cider-mode-hook #'company-mode)
+
+(setq company-idle-delay nil) ; never start completions automatically
+(global-set-key (kbd "M-TAB") #'company-complete) ; use meta+tab, aka C-M-i, as manual trigger
+
+(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 
 ;;; clj-refactor
 (require 'clj-refactor)
