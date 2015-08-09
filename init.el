@@ -94,6 +94,9 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+;; general
+(show-paren-mode 1) ;; highlights matching parens
+
 ;; paredit
 (require 'paredit)
 
@@ -107,11 +110,12 @@
 
 ;; clojure-mode
 (require 'clojure-mode)
-(add-hook 'cider-mode-hook #'eldoc-mode)
 (add-hook 'clojure-mode-hook #'paredit-mode)
+(add-hook 'clojure-mode-hook #'subword-mode)
 
 ;; cider
 (require 'cider)
+(add-hook 'cider-mode-hook #'eldoc-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
 (add-hook 'cider-repl-mode-hook #'subword-mode)
 
@@ -131,6 +135,8 @@
   (clj-refactor-mode 1)
   (yas-minor-mode 1) ; for adding require/use/import
   (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
 ;; haskell-mode
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
