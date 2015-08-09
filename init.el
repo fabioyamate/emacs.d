@@ -55,6 +55,9 @@
     ;; colorful parenthesis matching
     rainbow-delimiters
 
+    ;; syntax checker
+    flycheck
+
     ;; edit html tags like sexps
     tagedit
 
@@ -108,6 +111,9 @@
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
+;; syntax checker
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; clojure-mode
 (require 'clojure-mode)
 (add-hook 'clojure-mode-hook #'paredit-mode)
@@ -139,6 +145,9 @@
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
 ;; haskell-mode
+(require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
 (require 'elm-mode)
+
+(provide 'init)
