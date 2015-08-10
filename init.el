@@ -29,6 +29,9 @@
 
     clj-refactor
 
+    ;; minor mode with midje
+    midje-mode
+
     ;; extra syntax highlighting for clojure
     clojure-mode-extra-font-locking
 
@@ -118,6 +121,9 @@
 (require 'clojure-mode)
 (add-hook 'clojure-mode-hook #'paredit-mode)
 (add-hook 'clojure-mode-hook #'subword-mode)
+
+(require 'midje-mode)
+(add-hook 'clojure-mode-hook 'midje-mode)
 
 ;; cider
 (require 'cider)
