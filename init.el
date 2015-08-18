@@ -69,6 +69,7 @@
 
     haskell-mode
     elm-mode
+    rust-mode
 
     ;; https://github.com/rejeep/f.el
     f
