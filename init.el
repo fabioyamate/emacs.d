@@ -103,6 +103,9 @@
 ;; general
 (show-paren-mode 1) ;; highlights matching parens
 
+;; switch window with S-<arrow>
+(windmove-default-keybindings)
+
 ;; paredit
 (require 'paredit)
 
