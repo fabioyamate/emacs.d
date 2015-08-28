@@ -103,6 +103,10 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+;; font
+(set-face-attribute 'default nil :height 140)
+(set-default-font "Monaco")
+
 ;; theme
 (load-theme 'solarized-light t)
 
