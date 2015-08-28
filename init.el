@@ -71,6 +71,8 @@
     elm-mode
     rust-mode
 
+    solarized-theme
+
     ;; https://github.com/rejeep/f.el
     f
 
@@ -100,6 +102,9 @@
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+
+;; theme
+(load-theme 'solarized-light t)
 
 ;; general
 (show-paren-mode 1) ;; highlights matching parens
