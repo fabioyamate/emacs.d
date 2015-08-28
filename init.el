@@ -118,6 +118,8 @@
 (global-linum-mode) ;; line numbers
 (show-paren-mode 1) ;; highlights matching parens
 
+(setq-default truncate-lines t) ;; disable truncate line
+
 ;; switch window with S-<arrow>
 (windmove-default-keybindings)
 
