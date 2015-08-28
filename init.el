@@ -107,6 +107,11 @@
 (load-theme 'solarized-light t)
 
 ;; general
+(menu-bar-mode -1) ;; hide menu bar
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
+
+(global-linum-mode) ;; line numbers
 (show-paren-mode 1) ;; highlights matching parens
 
 ;; switch window with S-<arrow>
