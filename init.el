@@ -158,7 +158,7 @@
 (setq company-idle-delay nil) ; never start completions automatically
 (global-set-key (kbd "M-TAB") #'company-complete) ; use meta+tab, aka C-M-i, as manual trigger
 
-(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+; (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 
 ;;; clj-refactor
 (require 'clj-refactor)
@@ -171,8 +171,46 @@
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
 ;; haskell-mode
+
+; cabal install happy ghc-mod
 (require 'haskell-mode)
+
+; cabal install hasktags
+(let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
+  (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
+  (add-to-list 'exec-path my-cabal-path))
+(custom-set-variables '(haskell-tags-on-save t))
+
+; cabal install stylish-haskell
+; (custom-set-variables
+;   '(haskell-process-suggest-remove-import-lines t)
+;   '(haskell-process-auto-import-loaded-modules t)
+;   '(haskell-process-log t))
+; (eval-after-load 'haskell-mode '(progn
+;   (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+;   (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+;   (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
+;   (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
+;   (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
+;   (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
+;   (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)))
+; (eval-after-load 'haskell-cabal '(progn
+;   (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+;   (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+;   (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+;   (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
+; 
+(custom-set-variables '(haskell-process-type 'cabal-repl))
+
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+
+; (eval-after-load 'haskell-mode
+;  '(define-key haskell-mode-map [f8] 'haskell-navigate-imports))
+
+; ghc-mod
+; (autoload 'ghc-init "ghc" nil t)
+; (autoload 'ghc-debug "ghc" nil t)
+; (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
 (require 'elm-mode)
 
