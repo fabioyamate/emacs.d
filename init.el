@@ -105,10 +105,10 @@
 
 ;; font
 (set-face-attribute 'default nil :height 140)
-(set-default-font "Monaco")
+(set-frame-font "Hack")
 
 ;; theme
-(load-theme 'solarized-light t)
+(load-theme 'solarized-dark t)
 
 ;; general
 (menu-bar-mode -1) ;; hide menu bar
