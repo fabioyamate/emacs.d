@@ -70,6 +70,7 @@
     haskell-mode
     elm-mode
     rust-mode
+    elixir-mode
 
     solarized-theme
 
@@ -213,5 +214,6 @@
 ; (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
 (require 'elm-mode)
+(require 'elixir-mode)
 
 (provide 'init)
